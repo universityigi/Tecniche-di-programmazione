@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <title>Esame di Tecniche di Programmazione del 17/01/2018</title>
+    <style>
+      img {
+      margin: 15px;
+      }
+      
+      .maxwidth {
+      font-family: Verdana, Geneva, sans-serif;
+      max-width: 1000px;
+      margin: auto;
+      position: absolute;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%);
+      }
+      
+      hr {
+      border: 1px solid;
+      color: gray;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="maxwidth">
+      
+      <h1>Esame di Tecniche di Programmazione del 17/01/2018</h1>
+      <hr>
+
+      <h3>Istruzioni per lo svolgimento della prova:</h3>
+      <ul>
+	      <li>Inserire i propri dati personali (<strong>matricola, nome e
+	          cognome</strong>) nel file studente.txt.</li>
+	      <li>All'esercizio i &egrave; associata la
+	        directory <code>esercizio{i}</code>, contenente i file necessari
+	        allo svolgimento dell'esercizio. Ciascun esercizio deve essere
+	        svolto modificando esclusivamente il file <code>esercizio{i}.h
+	        </code> (se necessario) ed <code>esercizio{i}.c</code> presenti
+	        nella directory corrispondente. Nessun file per qualsiasi motivo
+	        deve essere spostato dalla directory in cui si trova. Nessun altro
+	        file deve essere modificato. Non devono essere creati ulteriori
+	        file.</li>
+	      <li>Il file contenente il programma principale di ciascun esercizio
+	        &egrave; <code> test_esercizio{i}.c</code>. Tale file deve essere
+	        compilato usando il <code> Makefile</code> fornito nella directory,
+	        ed il corrispondente eseguibile (<code> test_esercizio{i}</code>)
+	        lanciato per eseguire i test di correttezza e conoscerne l'esito. Il
+	        file <code>test_esercizio{i}.c</code> non deve essere modificato per
+	        alcun motivo.</li>
+	      <li>Alla fine del tempo concesso per svolgere l' esame, dopo essersi assicurati
+	        di aver inserito i propri dati personali nel file studente.txt, lanciare da terminale
+	        l'eseguibile <i>consegna_esame.sh</i> (<code>. consegna_esame.sh</code>).</li>
+	      <li>Per controllare l'avvenuta consegna dell'esame, controllare che la propria matricola
+	        sia presente nella pagina web di controllo consegne linkata alla fine della pagina (la pagina e'
+	        aggiornata una volta al minuto, quindi attendere almeno un minuto prima di chiedere al tutor).</li>
+	      <li>Per eventuali problemi o dubbi, chiedere al docente.</li>
+      </ul>
+      <hr>
+
+      <p><br></p>
+
+      <h2>Esercizio 1</h2>
+      <p>Sia data una stringa memorizzata attraverso una lista concatenata i cui elementi appartengono alla seguente struttura <code>CharList</code>:</p>
+      <p><code>
+	        typedef struct CharList {<br>
+	        &nbsp;&nbsp;char c;<br>
+	        &nbsp;&nbsp;struct CharList* next;<br>
+	        } CharList;
+      </code></p>
+      <p>Implementare la seguente funzione C:</p>
+      <p><code>int isPalindrome(CharList* list);</code></p>
+      <p>che dato in input:
+	      <ul>
+	        <li>una lista concatenata <code>list</code> non vuota</li>
+	      </ul>
+        restituisca 1 se la string rappresentata da <code>list</code> e' palindroma, 0 altrimenti.
+        Si ricordi che una stringa e' palindroma se, letta al contrario, rimane invariate. Ad esempio
+        "anna" e "bob" sono stringhe palindrome, mentre "anno" e "bobo" non sono palindrome.
+      </p>
+
+      <h3>Esempio</h3>
+      <p>Data una lista <code>CharList* lista</code> contenente la seguente
+        string:</p>
+      <pre>
+        anna
+      </pre>
+      <p>richiamando la seguente
+        linea di codice:</p>
+      <p><code>int palindrome = isPalindrome(lista);</code></p>
+      <p>assegni alla variabile <code>palindrome</code> il valore 1</p>
+
+      <hr>
+
+      <p><br></p>
+
+      <h2>Esercizio 2</h2>
+
+      <p>Sia data una lista <code>MatList</code>:<br>
+        <br>
+        <code>typedef struct MatList { <br>
+          &nbsp; mat* m; <br>
+          &nbsp; struct MatList* next; <br>
+          } MatList;
+      </code></p>
+      
+      <p>Contenente puntatori alla seguente struttura <code>Mat:</code></p>
+      <p><code>
+          typedef struct Mat {<br>
+          &nbsp;&nbsp;int cols; // numero di colonne<br>
+          &nbsp;&nbsp;int rows; // numero di righe<br>
+          &nbsp;&nbsp;int** row_ptrs; // puntatori alle righe<br>
+          } Mat;
+      </code></p>
+      <p>Si realizzi la funzione</p>
+      <ul>
+        <li><code> MatList* matrixRealization( int rows_cols_sum, int init_val );</code></li>
+      </ul>
+      <p>che dato in input un intero <code>rows_cols_sum</code> che
+        rappresenta la somma del numero di righe e del numero di
+        colonne di una matrice, restituisca il puntatore ad una lista
+        concatenata <code>MatList</code> (ovviamente da allocare) che
+        contenga tutte le possibili matrici in cui la somma del numero
+        di righe e del numero di colonne e' pari
+        a <code>rows_cols_sum</code>.
+
+        Tali matrici dovranno essere inizializzate con un unico valore
+        <code>init_val</code> fornito in input.
+
+        Le matrici dovranno essere memorizzate nella lista per numero di righe crescente, ovvero
+        la prima matrice della lista dovra' avere una riga (e
+        <code>rows_cols_sum-1</code> colonne), la seconda 2 righe e l'ultima
+        <code>rows_cols_sum-1</code> righe e una colonna.  Nota: ogni matrice in
+        lista andra' allocata singolarmente.
+      </p>
+
+      <h3>Esempio</h3>
+      <p> Dati i seguenti valori in ingresso:
+
+      <p><code>rows_cols_sum = 6  <br>init_val = 0</code>
+      <p> L'esecuzione della seguente istruzione <br>
+        <code>MatList* dest_list = matrixRealization(rows_cols_sum, init_val)</code><br>
+        assegni alla variabile <code>dest_list</code> il puntatore a:
+        <p><code>
+            List Elem 0<br>
+            0 0 0 0 0<br>
+            <br>
+            <br>
+            List Elem 1<br>
+            0 0 0 0 <br>
+            0 0 0 0<br>
+            <br>
+            <br>
+            List Elem 2<br>
+            0 0 0 <br>
+            0 0 0 <br>
+            0 0 0<br>
+            <br><br>
+            List Elem 3<br>
+            0 0 <br>
+            0 0 <br>
+            0 0 <br>
+            0 0<br>
+            <br><br>
+            List Elem 4<br>
+            0 <br>
+            0 <br>
+            0 <br>
+            0 <br>
+            0<br>
+            <br><br>
+          </code>
+        <hr>
+
+      <p><br></p>
+
+
+      <h2>Esercizio 3</h2>
+
+      <p>Implementare la seguente funzione <strong>ricorsiva</strong> C:</p>
+
+      <p></p>
+
+      <p><code> void removeChar( char *input_str,  char c, char* output_str );</code><br>
+      </p>
+
+      <p></p>
+
+      <p>che dato in input una stringa <code>input_str</code> e un
+      carattere <code>c</code>, copia in <code>output_str</code> la
+      stringa <code>input_str</code> a meno del
+      carattere <code>c</code>, ovvero rimuovendo tutte le occorrenze
+      di <code>c</code> dalla stringa di input. La funziona dovra'
+      essere case sensitive, ovvero versione maiuscola e versione
+      minuscola di uno stesso carattere non dovranno essere
+      considerate come lo stesso carattere. La
+      stringa <code>output_str</code> e' pre-allocata per contenere, in
+      caso, l'intera stringa di input <code>input_str</code>.</p>
+
+      <p>Ricorda: Una stringa in C e' un array di caratteri terminato dal carattere <code>'\0'</code>.
+      </p>
+      <h3>Esempio</h3>
+
+      <p>Data la seguente stringa <code>input_str</code> in ingresso:
+      <p><code>"Use gcc to compile your C programs."</code>
+
+      <p>La chiamata a <code>removeChar( input_str,  'C', output_str )</code> (con carattere da rimuovere C maiuscolo) dovra' memorizzare in <code>output_str</code> la seguente stringa:
+      <p><code>"Use gcc to compile your  programs."</code>
+        
+      <p><br></p>
+
+      <p></p>
+      <h1><a title="Download Esame" href="20180117.tar.gz">Download Esame</a></h1>
+      <h1><a title="Controllo Consegna Esame" target=blank href="check_consegna.html">Controllo Consegna Esame</a></h1>
+
+    </div>
+  </body>
+</html>

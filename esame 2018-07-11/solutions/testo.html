@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <title>Esame di Tecniche di Programmazione del 11/07/2018</title>
+    <style>
+      img {
+      margin: 15px;
+      }
+      
+      .maxwidth {
+      font-family: Verdana, Geneva, sans-serif;
+      max-width: 1000px;
+      margin: auto;
+      position: absolute;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%);
+      }
+      
+      hr {
+      border: 1px solid;
+      color: gray;
+      }
+      
+      code {
+      #border: 1px solid;
+      color: blue;
+      }
+      
+      listing {
+      #border: 1px solid;
+      color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="maxwidth">
+      
+      <h1>Esame di Tecniche di Programmazione del 11/07/2018</h1>
+
+      <h2>Esercizio 1</h2>
+      <p>Sia data la seguente struttura <code>Mat:</code></p>
+      <p><code>
+        struct Mat {<br>
+        &nbsp;&nbsp;int cols; // numero di colonne<br>
+        &nbsp;&nbsp;int rows; // numero di righe<br>
+        &nbsp;&nbsp;int** row_ptrs; // puntatori alle righe<br>
+        };
+      </code></p>
+
+      <p>Implementare la seguente funzione C:</p>
+      <p><code>void trasforma( Mat* src, int* vect );</code></p>
+      <p>
+        che, data in input una matrice <code>src</code> e un vettore <code>vect</code> 
+		(gia' allocato, avente dimensione pari al numero di righe della matrice <code>src</code> 
+		e contenente valori nulli), assegni a ciascun elemento del vettore 
+		la somma degli elementi presenti sulla diagonale discendente 
+		verso destra che inizia dall'elemento <code>src[r,0]</code>.
+
+      </p>
+      <h3>Esempio</h3>
+      <p>Data una struttura <code>Mat *src</code> contenente la seguente matrice <code>3x4</code>:</p>
+      <pre>
+  4 2 6	10
+  2 9 3	0
+  1 3 2 12
+      </pre>
+      <p>richiamando la seguente linea di codice:</p>
+      <p><code>trasforma( src, vect )</code></p>
+      <p>si ottiene il seguente effetto su <code>vect</code>:</p>
+      <pre>
+  15 5 1
+      </pre>
+      
+      <hr>
+      <h2>Esercizio 2</h2>
+      <p>
+        Sia data una lista i cui elementi appartengono alla seguente struttura <code>ListNode</code>:<br><br>
+        <code>
+          struct ListNode {<br>
+          &nbsp;&nbsp;Data info;<br>
+          &nbsp;&nbsp;ListNode *next;<br>
+          };
+        </code><br><br>
+        dove ogni elemento contiene un valore intero:<br><br>
+        <code>typedef int Data;</code><br>
+      </p>
+      
+      <p>Implementare la seguente funzione C:</p>
+      <p><code>ListNode *subset(ListNode *list);</code></p>
+      <p>
+        che data in input una lista concatenata <code>list</code>,
+        restituisca il puntatore ad una nuova lista concatenata che contiene i soli elementi di <code>list</code>
+        i cui valori sono maggiori dell'elemento ad essi successivo.
+		L'ultimo valore di <code>list</code> deve essere sempre incluso.
+        L'ordine degli elementi della lista ritornata dovra' essere quello della lista di input.
+      <p>
+        Si gestisca il caso in cui il puntatore <code>list</code> &egrave; nullo,
+        restituendo un puntatore nullo.
+        La lista in ingresso alla funzione non deve essere modificata in alcun modo.
+      </p>
+      <h3>Esempio</h3>
+      <p> Data la seguente lista <code>list</code> in ingresso:
+      <p><code>39 -> 36 -> 8 -> 35 -> 31 -> 40 -> 30 -> NULL</code></p>
+
+      <p>
+        L'esecuzione della seguente linea di codice:<br><br>
+        <code>ListNode* dest_list = subset(list);</code><br><br>
+        memorizza in <code>dest_list</code> il puntatore a:
+      <p>
+      <code>39 -> 36 -> 35 -> 40 -> 30 -> NULL</code>
+      
+      <hr>
+      <h2>Esercizio 3</h2>
+      <p>Sia data una lista i cui elementi appartengono alla seguente struttura:</p>
+      <p><code>
+	      struct ListNode {<br>
+	      &nbsp;&nbsp;int info;<br>
+	      &nbsp;&nbsp;struct ListNode* next;<br>
+	      };
+      </code></p>
+      <p>si realizzi la funzione <strong>ricorsiva</strong> C:</p>
+
+      <p><code>ListNode* max(ListNode* lista1, ListNode* lista2)</code></p>
+      <p>Che date in input due liste <code>lista1</code> e <code>lista2</code> della stessa lunghezza, restituisca una lista della stessa lunghezza, <br>
+      in cui ogni elemento in posizione <code>i</code> contiene il valore massimo tra i corrispondenti elementi in posizione <code>i</code> delle liste <code>lista1</code> e <code>lista2</code>.
+
+      <h3>Esempio</h3>
+      <p>Sia <code>lista1</code> la seguente sequenza:</p>
+      <p><code>
+        [-3] -> [-5] -> [4] -> [-10] -> [10] -> [-5] -> NULL
+      </code></p>
+      <p>Sia <code>lista2</code> la seguente sequenza:</p>
+      <p><code>
+        [6] -> [-5] -> [-5] -> [1] -> [-2] -> [-1] -> NULL
+      </code></p>
+      <p>Richiamando la seguente istruzione:</p>
+      <p><code>ListNode* list_max = max(lista1, lista2);</code></p>
+      <p>Dove <code>list_max</code> dovr&agrave; contenere:</p>
+      <p><code>
+        [6] -> [-5] -> [4] -> [1] -> [10] -> [-1] -> NULL
+      </code></p>
+    </div>
+  </body>
+</html>
+
