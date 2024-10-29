@@ -1,0 +1,39 @@
+Esercizio 1 - 13-06-2023 A
+
+Si scriva una funzione
+
+    int massimo_flip_riga(Mat *m);
+    
+che data in input una matrice di interi m di dimensione 2Nx2N, restituisca la somma massima del quadrante (sottomatrice) NxN a partire dagli indici (0,0), (0,N), (N,0), (N,N)
+della matrice m2 ottenuta effettuando l'operazione “flip-riga” (si veda definizione sotto) sulle righe di indice pari a partire da m.
+L'operazione “flip-riga” è definita nel seguente modo: Data una riga “i” composta dagli elementi (a1, a2, ..., an) = i, flip-riga(i) = (an, …, a2, a1).
+Ad esempio la riga (1, 2, 3, 4) dopo una flip-riga diventa (4, 3, 2, 1).
+
+Nota: in caso di quadrante 0x0 (quadrante matrice vuota) la somma risultante è 0, e se una riga è composta da un solo elemento (oppure da nessun elemento), rimane invariata.
+
+Esempio 1
+
+m:
+0 1 0 3
+0 3 0 0
+0 0 0 0
+0 0 0 0
+
+La somma che ritorneremo è 6, proveniente dal quadrante 2x2: 
+
+3 0
+0 3  
+
+dopo aver effettuato un flip-riga della prima riga.
+
+output: 6
+
+Esempio 2
+
+m:
+5 8
+1 9
+
+Il valore ritornato sarà 9 perché in questa matrice i sottoquadranti sono i singoli elementi.
+
+output: 9

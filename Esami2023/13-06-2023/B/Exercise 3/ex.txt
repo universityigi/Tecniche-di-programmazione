@@ -1,0 +1,41 @@
+Esercizio 3 - 13-06-2023 B
+
+Implementare la funzione
+
+  TipoAlbero espandiAlbero(TipoAbero a, int k)
+
+dato in ingresso un albero binario a e un intero k, restituisce un nuovo albero che ha la stessa struttura di base dell'albero input,e che per ogni nodo foglia genera un nuovo figlio
+(a sinistra) il cui valore i è pari al valore della foglia n se k è minore uguale alla media del percorso fino alla foglia (foglia esclusa),
+altrimenti è pari a - il valore della foglia n.
+
+Nota bene: Per l'albero vuoto non va effettuata nessuna modifica. Per la radice, considerare 0 come somma degli antenati.
+
+Esempio
+
+Dato l'albero:
+
+      3 		
+    /   \
+   3     4		
+  / \      \ 
+ 1   1      3		
+/
+8
+
+con k = 3
+
+Abbiamo 3 nodi foglia: 8, 1, e 3.
+La media del percorso fino ad 8 è 2,33 che è minore di k, quindi avrà un figlio con valore pari a -8.
+La media del percorso fino ad 1 è 3 che è uguale a k, quindi avrà un figlio con valore pari a -1.
+La media del percorso fino a 3 è 3,5 che è maggiore di k, quindi avrà un figlio con valore pari a 3.
+
+L’albero ritornato sarà pertanto il seguente.
+         3 		
+       /   \
+     3      4		
+    / \       \ 
+   1   1        3		
+  /    /        /
+ 8    -1       3
+              /
+            -8

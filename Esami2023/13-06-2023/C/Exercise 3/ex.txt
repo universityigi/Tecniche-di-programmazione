@@ -1,0 +1,41 @@
+Esercizio 3 - 13-06-2023 C
+
+Implementare la funzione
+
+  TipoAlbero alberoPiuDistanzaNodo(TipoAlbero a) 
+
+dato in ingresso un albero binario a, costruisce un nuovo albero con la stessa struttura dell'albero in input e i cui valori dei nodi sono pari (ad eccezione della radice)
+alla distanza dal nodo radice più il vecchio valore del nodo.
+
+Nota bene: Se l’albero di partenza è vuoto, ritornare un albero vuoto.
+
+Esempio
+
+Dato l'albero:
+
+      3 		
+    /   \
+   3      3	
+  / \      \ 
+ 1   1      3		
+/
+8
+
+Livello 0:
+La radice resta invariata, per cui 3 sarà il valore anche della nuova radice.			
+Livello 1:
+A questo livello siamo a distanza 1 dalla radice, per cui i nuovi nodi avranno valore 3+1=4 e 3+1=4.
+Livello 2:
+A questo livello siamo a distanza 2 dalla radice, per cui i nuovi nodi avranno valore 1+2=3, 1+2=3 e 3+2=5.
+Livello 3:
+A questo livello siamo a distanza 3 dalla radice, per cui i nuovi nodi avranno valore 8+3=11.
+
+L’albero di ritorno sarà pertanto il seguente:
+
+         3 		
+       /   \
+     4       4		
+    / \       \ 
+   3   3       5		
+  /
+11	

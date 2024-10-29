@@ -1,0 +1,23 @@
+Esercizio 3 - 13-06-2023 D
+
+Implementare la funzione
+
+  int sinistroMenoDestro (TipoAlbero a)
+
+dato in ingresso un albero binario a, restituisce la differenza tra il massimo del sottoalbero sinistro della radice di a e il minimo del sottoalbero destro della radice di a.
+NB: Se a è vuoto, ritornare 0. (considerare nel calcolo del max e min solo i valori dei nodi, non dei sottoalberi nulli.
+Assumere sempre che se a non è vuoto, allora la sua radice avrà almeno un nodo nel sottoalbero destro e uno nel sottoalbero sinistro).
+
+Esempio
+
+Dato l'albero:
+
+      3 		
+    /   \
+   3      3	
+  / \      \ 
+ 1   1      3		
+/
+8
+
+Il valore ritornato sarà 5 perché il massimo del sottoalbero sinistro è 8 ed il minimo del sottoalbero destro è 3, per cui 8-3=5.

@@ -1,0 +1,57 @@
+Si scriva una funzione
+
+    double trasforma_e_min_quad(Mat* m);
+
+che data in input una matrice di interi m NxN, con N dispari, prima trasforma ogni elemento m[i][j] di m in m[i][j] - i + j, 
+e successivamente ritorna la somma dei 4 elementi minimi tra gli elementi di ogni quadrante della matrice risultante.
+In questo caso, definiamo quadranti di una matrice, le 4 porzioni della matrice che sono delimitate dalla riga e colonna centrali della matrice (escluse).
+La matrice di ingresso non deve essere modificata.
+
+Esempio
+
+Matrice input: 
+14  10  5   18  3  
+22  6   4   2   22  
+3   10  20  18  24  
+12  13  10  16  6  
+16  24  9   24  10
+
+Matrice trasformata:
+14  11  7   21  7  
+21  6   5    4  25  
+1   9   20  19  26  
+9   11  9   16  7  
+12  21  7   23  10
+
+La suddivisione della matrice in 4 quadranti è la seguente:
+
+14  11    7    21  7  
+21  6     5     4  25  
+
+1 9      20    19  26  
+
+9   11    9    16  7  
+12  21    7    23  10
+
+Per cui i quadranti sono:
+
+14  11
+21  6  
+
+21  7
+4  25
+
+ 9  11  
+12  21 
+
+19  7
+23  10
+
+Calcoliamo gli elementi minimi nei 4 quadranti:
+
+1) Quadrante 1: 6
+2) Quadrante 2: 4
+3) Quadrante 3: 9
+4) Quadrante 4: 7
+
+La somma dei minimi è 6 + 4 + 9 + 7 = 26, che è il valore da ritornare.

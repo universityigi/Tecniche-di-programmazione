@@ -1,0 +1,84 @@
+Esercizio 2 - 13-06-2023 B
+
+Regole
+In entrambi gli esercizi è consentito accedere ai campi della struttura (next, info). Si può anche utilizzare l’interfaccia di lista fornita in aux.h.
+È possibile definire funzioni ausiliarie. Negli esercizi in cui è richiesta una soluzione ricorsiva, tutte le funzioni ausiliarie usate devono essere ricorsive.
+Funzioni che non processano direttamente i dati, ovvero quelle O(1), ovviamente non saranno ricorsive (né iterative).
+Non è consentito usare variabili globali (comprese zone di memoria allocate dinamicamente) e altre strutture dati (es. array) non esplicitamente indicati nel testo dell’esercizio.
+
+Esercizio 2.1
+
+Scrivere una funzione ricorsiva:
+
+  TipoLista inserisciLista(TipoLista l1, TipoLista l2, int k);
+  
+la quale riceve due liste di interi l1 ed l2 e un intero k minore o uguale alla lunghezza di l1. La funzione deve ritornare una nuova lista che contiene nel seguente ordine:
+i primi k elementi di l1 (nell'ordine in cui compaiono in l1)
+tutti gli elementi di l2 (nell'ordine in cui compaiono in l2)
+gli elementi rimanenti di l1 dopo i primi k (nell'ordine in cui compaiono in l1)
+
+Nota bene: se la lista l1 è una lista vuota, dalla definizione sopra si ha che va ritornata una copia di l2.
+
+Esempio 1
+
+l1: [1, 4, 2, 3] 
+l2: [5, 2, 4, 1] 
+k: 3
+Output: [1, 4, 2,  5, 2, 4, 1,  3]
+
+Infatti, i primi k=3 elementi di l1 sono [1,4,2] e i rimanenti sono [3].
+
+Esempio 2
+
+l1: lista vuota
+l2: [1, 2]
+k: 0
+Output: [1, 2]
+
+Infatti, l1 è vuota, per cui va ritornata una copia di l2.
+
+Esempio 3
+
+l1: [3, 6, 1, 9, 3, 1, 0]
+l2: [3, 2, 5, 8, 3, 4]
+k: 2
+Output: [3, 6,  3, 2, 5, 8, 3, 4,  1, 9, 3, 1, 0]
+
+Infatti, i primi k=2 elementi di l1 sono [3, 6] e i rimanenti sono [1, 9, 3, 1, 0].
+
+
+Esercizio 2.2
+
+Scrivere una funzione:
+
+  TipoLista argmaxListeInserite(TipoLista* liste1, TipoLista* liste2, int n, int k);
+  
+la quale riceve due array liste1 e liste2, ognuno contenente n liste di interi non negativi, e un intero k. La funzione deve ritornare una nuova lista di lunghezza n, tale che l'elemento all'indice i sia:
+1, se il massimo valore tra gli elementi di liste1[i] è uguale al massimo valore della lista ottenuta come inserisciLista(liste1[i], liste2[i], k);
+0 altrimenti.
+
+Nota bene:
+ -si assuma che tutte le liste in liste1 abbiano lunghezza maggiore o uguale a k
+ -se n=0, la funzione deve restituire una lista vuota
+ -se una lista in liste1 è vuota, si consideri 0 come suo valore massimo.
+ 
+Esempio
+
+liste1: [
+  [6, 7, 1, 4, 8, 8, 2],
+  [8, 8, 8],
+  [9, 9, 2]
+]
+
+liste2: [ 
+  [8, 9, 5, 1, 9, 2, 4],
+  [8, 5, 5, 1, 3, 8, 7, 2],
+  [7, 5, 3]
+]
+k: 1
+
+Output: [
+  0, (infatti, il massimo di liste1[0] è 8, mentre il massimo di inserisciLista(liste1[0], liste2[0], 1) è 9 )
+  1, (infatti, il massimo di liste1[1] è 8, uguale al massimo di inserisciLista(liste1[1], liste2[1], 1) )
+  1  (infatti, il massimo di liste1[2] è 9, uguale al massimo di inserisciLista(liste1[2], liste2[2], 1) )
+]

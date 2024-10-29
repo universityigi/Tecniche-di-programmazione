@@ -1,0 +1,53 @@
+Esercizio 3 - 14-07-2023 A
+  
+Implementare la funzione
+
+  TipoAlbero maxMenoMinPari(TipoAlbero a);
+
+che ritorni un nuovo albero con la stessa struttura dell’albero a, e i valori dei nodi calcolati nel modo seguente: per ogni nodo n, chiamando n_a il nodo corrispondente di a,
+il valore di n deve essere la differenza tra:
+la somma dei valori dei nodi del sottoalbero di n_a che contiene il maggior numero di nodi pari;
+la somma dei valori dei nodi del sottoalbero di n_a che contiene il minor numero di nodi pari.
+A parità di numero di nodi pari, si consideri il sottoalbero sinistro come sottoalbero col maggior numero di nodi pari. Per sottoalberi vuoti, si consideri 0 sia come somma dei loro nodi,
+che come numero di nodi pari che contengono.
+  
+Esempio
+  
+Dato l'albero:
+
+                 3 
+           _____/ \_____   
+          /             \  
+         7               7 
+       _/ \_           _/ \_   
+      /     \         /     \  
+     4       5       3       1 
+                     |           
+                    /            
+                   3             
+
+Livello 3:
+- il nodo 3 non ha sottoalberi -> valore 0
+Livello 2:
+- il nodo 4 non ha sottoalberi -> valore 0
+- il nodo 5 non ha sottoalberi -> valore 0
+- il nodo 3 ha un solo sottoalbero di somma 3 -> valore 3
+- il nodo 1 non ha sottoalberi -> valore 0
+Livello 1:
+- il nodo 7 (sx) ha due sottoalberi: sx con 1 nodo pari e somma 4, dx con 0 nodi pari e somma 5 -> valore 4-5 = -1
+- il nodo 7 (dx) ha due sottoalberi, entrambi con 0 nodi pari -> valore 3+3 - (1) = 5
+Livello 0:
+- il nodo 3 ha due sottoalberi: sx con 1 nodo pari e somma 7+4+5=16; dx con 0 nodi pari e somma 7+3+3+1=14 -> valore 16-14 = 2
+
+L’albero di ritorno sarà pertanto il seguente:
+
+                 2 
+           _____/ \_____   
+          /             \  
+         -1              5 
+       _/ \_           _/ \_   
+      /     \         /     \  
+     0       0       3       0 
+                     |           
+                    /            
+                   0

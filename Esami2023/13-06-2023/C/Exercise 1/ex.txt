@@ -1,0 +1,30 @@
+Esercizio 1 - 13-06-2023 C
+
+Si scriva una funzione
+
+    Mat* prima_gli_unici(Mat *m);
+    
+che prende in input una matrice di interi m di dimensione NxM, con elementi compresi nell'intervallo [0, N*M]. La funzione restituisce una copia della matrice m,
+in cui gli elementi che si ripetono più di una volta vengono sostituiti come segue: se la prima occorrenza dell'elemento è già presente nella matrice in una riga di indice pari, 
+viene sostituito con -2, altrimenti con -1. È importante mantenere l'elemento che appare per primo nella matrice, sia in ordine di riga che (in caso di stessa riga) di colonna. 
+Ad esempio, se abbiamo l'elemento x in posizione (i, j) e anche in posizione (i, k), (l,j) con k > j e l > i, gli elementi in posizione (i, k) e (l, j) devono essere sostituiti come descritto.
+
+Esempio 1
+
+m:
+0 1
+1 1
+
+output m2:
+0  1
+-2 -2
+    
+Esempio2
+
+m:
+0 1
+2 3
+    
+output m2:
+0 1
+2 3

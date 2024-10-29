@@ -1,0 +1,41 @@
+Esercizio 1 - 14-07-2023 B
+
+Si scriva una funzione
+
+    int cambia_segno_e_massima_somma(Mat* m);
+    
+che data in input una matrice di interi m NxN, con N dispari, prima inverte il segno di tutti gli elementi la cui somma tra indice di riga e indice di colonna è dispari,
+e successivamente ritorna il massimo tra la somma degli elementi dei quadranti della matrice.
+Definiamo quadranti di una matrice, le 4 porzioni della matrice che sono racchiuse tra le sue 2 diagonali (elementi della diagonale esclusi).
+
+Esempio
+
+m:
+1   2   3   4   0
+5   6   7   8   1
+9   8   7   6   2
+5   4   3   2   3
+4   5   6   7   8
+
+Prima ne invertiamo il segno di tutti gli elementi in posizione (i,j) tale per cui i+j sia dispari:
+ 1   -2    3   -4    0
+-5    6   -7    8   -1
+ 9   -8    7   -6    2
+-5    4   -3    2   -3
+ 4   -5    6   -7    8
+
+Ora immaginiamo di tracciare le due diagonali e otteniamo la suddivisione della matrice in 4 quadranti:
+ 1    -2     3    -4     0
+-5     6    -7     8    -1
+ 9    -8     7    -6     2
+-5     4    -3     2    -3
+ 4    -5     6    -7     8
+
+
+Calcoliamo la somma degli elementi nei 4 quadranti:
+1) Quadrante Nord: -2+3-4-7=-10
+2) Quadrante Est: -1-6+2-3 = -8
+3) Quadrante Sud: -3-5+6-7= -9
+4) Quadrante Ovest: -5+9-5-8 = -9
+
+Il quadrante Est ha la somma più alta, per cui il valore ritornato sarà -8.

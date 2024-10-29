@@ -1,0 +1,67 @@
+Esercizio 1 - 14-07-2023 A
+
+Si scriva una funzione
+
+    Mat* trasponi_e_massima_diagonale(Mat* m);
+    
+che data in input una matrice di interi m di dimensione 2Nx2N, prima ne fa la trasposta, e successivamente restituisce la sottomatrice NxN di m
+tale che la somma degli elementi sulla diagonale principale è massima. Se più sottomatrici hanno la stessa somma massima, ritornare la sottomatrice con indice di riga minore.
+In caso di parità anche di indice di riga, ritornare la sottomatrice con indice di colonna minore(per indice di riga e di colonna di una sottomatrice si intende l’indice di riga e
+di colonna del suo elemento “in alto a sinistra”, ovvero l’indice di riga e di colonna minimo all’interno della sottomatrice).
+
+Esempio 1
+
+m:
+1  2
+3  4
+
+Prima facciamo la trasposta:
+1  3
+2  4
+
+In questo caso, le sottomatrici di dimensione 1x1 degenerano sugli elementi stessi, e gli elementi di matrici 1x1 appartengono alla loro diagonale principale,
+per cui la sottomatrice da ritornare sarà:
+
+4
+    
+Esempio 2
+
+m:
+1   2   3   4
+5   6   7   8
+9   8   7   6
+5   4   3   2
+
+Prima facciamo la trasposta:
+1   5   9   5
+2   6   8   4
+3   7   7   3
+4   8   6   2
+
+Adesso dobbiamo cercare la sottomatrice di dimensione 2x2 la cui somma degli elementi sulla diagonale principale è massima. Abbiamo 3 candidate a somma massima:
+
+1)
+5  9
+6  8
+
+2)
+9  5
+8  4
+
+3)
+6  8
+7  7
+
+Tutte e tre hanno somma di elementi sulla diagonale principale pari a 13. Allora andiamo a vedere l’indice di riga:
+1) indice di riga di 5 -> 0
+2) indice di riga di 9 -> 0
+3) indice di riga di 6 -> 1
+
+Allora i candidati rimasti sono le sottomatrici 1) e 2). Andiamo a vedere l’indice di colonna:
+1) indice di colonna di 5 -> 1
+2) indice di colonna di 9 -> 2
+
+Per cui la sottomatrice da ritornare sarà la sottomatrice:
+
+5  9
+6  8
