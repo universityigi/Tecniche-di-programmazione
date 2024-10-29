@@ -1,0 +1,49 @@
+Esercizio 3 - 14-07-2023 C
+  
+Implementare la funzione
+
+  TipoAlbero sommaDistMinAntenato(TipoAlbero a);
+
+che ritorni un nuovo albero con la stessa struttura dell’albero a, e i valori dei nodi calcolati nel modo seguente: per ogni nodo n, chiamando n_a il nodo corrispondente di a,
+il valore di n deve essere il valore di n_a sommato alla distanza tra n_a e il suo antenato a valore minimo. A parità di valore, si scelga l'antenato più distante. 
+Se l'albero è vuoto, la funzione deve ritornare un albero vuoto. Se un nodo non ha antenati, il suo valore deve rimanere invariato.
+  
+Esempio
+  
+Dato l'albero:
+
+                 3 
+           _____/ \_____   
+          /             \  
+         3               3 
+       _/ \_           _/      
+      /     \         /        
+     1       1       3         
+     |                           
+    /                            
+   8             
+
+Livello 0:
+- 3 non ha antenati, il suo valore rimane invariato
+Livello 1:
+- 3 (sx) ha antenato a valore minimo 3 (distanza 1), il suo valore diventa 3 + 1 = 4
+- 3 (dx) ha antenato a valore minimo 3 (distanza 1), il suo valore diventa 3 + 1 = 4
+Livello 2:
+- 1 (sx) ha antenato a valore minimo 3 (distanza 2), il suo valore diventa 1 + 2 = 3
+- 1 (dx) ha antenato a valore minimo 3 (distanza 2), il suo valore diventa 1 + 2 = 3
+- 3 ha antenato a valore minimo 3 (distanza 2), il suo valore diventa 3 + 2 = 5
+Livello 3:
+- 8 ha antenato a valore minimo 1 (distanza 1), il suo valore diventa 8 + 1 = 9
+
+L’albero di ritorno sarà pertanto il seguente:
+
+                 3 
+           _____/ \_____   
+          /             \  
+         4               4 
+       _/ \_           _/      
+      /     \         /        
+     3       3       5         
+     |                           
+    /                            
+   9 

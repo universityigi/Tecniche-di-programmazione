@@ -1,0 +1,75 @@
+Esercizio 2 - 11-09-2023
+
+Regole
+In entrambi gli esercizi NON è consentito accedere ai campi della struttura (next, info). Si deve quindi utilizzare l’interfaccia di lista fornita in aux.h.
+È possibile definire funzioni ausiliarie. Negli esercizi in cui è richiesta una soluzione ricorsiva, tutte le funzioni ausiliarie usate devono essere ricorsive.
+Funzioni che non processano direttamente i dati, ovvero quelle O(1), ovviamente non saranno ricorsive (né iterative).
+Non è consentito usare variabili globali (comprese zone di memoria allocate dinamicamente) e altre strutture dati (es. array) non esplicitamente indicati nel testo dell’esercizio.
+
+Esercizio 2.1
+Scrivere una funzione ricorsiva:
+
+  TipoLista sommeDueADue(TipoLista l);
+
+la quale riceve una lista di interi l. La funzione deve restituire una lista output di lunghezza pari all'intero superiore della metà della lunghezza di l,
+(se l ha lunghezza 5, output ha una lunghezza pari all'intero superiore di 5/2, ovvero 3).
+L'elemento i-esimo di output deve essere pari alla somma degli elementi 2*i-1-iesimo e 2*i-iesimo.
+Se l ha una lunghezza dispari, allora l'ultimo elemento di output è pari alla somma dell'ultimo elemento di l con il primo elemento di l.
+
+Nota bene:
+1) se l è una lista vuota, la funzione deve restituire una lista vuota.
+2) se l ha un solo elemento, output ha lunghezza 1 ed è pari al doppio dell'unico elemento di l
+
+Esempio 1
+
+l: []
+
+l è una lista vuota, quindi la funzione deve ritornare una lista vuota
+
+output: []
+
+Esempio 2
+
+l: [1,2,3,7,3,5,8]
+
+l ha una lunghezza pari a 7, quindi output ha una lunghezza pari all'intero superiore di 7/2 (4)
+
+il primo elemento di output è pari a 1 (primo elemento di l) + 2 (secondo elemento di l) = 3
+il secondo elemento di output è pari a 3 (terzo elemento di l) + 7 (quarto elemento di l) = 10
+il terzo  elemento di output è pari a 3 (quinto elemento di l) + 5 (sesto elemento di l) = 8
+poiché la l ha lunghezza dispari, il quarto  elemento di output è pari a 8 (settimo elemento di l) + 1 (primo elemento di l) = 9
+
+output: [3, 10, 8, 9]
+
+Esempio 3
+
+l: [3,6,1,9,3,1]
+
+l ha una lunghezza pari a 6, quindi output ha una lunghezza pari all'intero superiore di 6/2 (3)
+
+il primo elemento di output è pari 3 (primo elemento di l) + 6 (secondo elemento di l) = 9
+il secondo elemento di output è pari a 1 (terzo elemento di l) + 9 (quarto elemento di l) = 10
+il terzo  elemento di output è pari a 3 (quinto elemento di l) + 1 (sesto elemento di l) = 4
+  
+output: [9, 10, 4]
+
+Esercizio 2.2
+Scrivere una funzione:
+
+  double* mediaSommeDueADue(TipoLista* liste, int n);
+
+la quale riceve un array di n liste di interi. La funzione deve restituire un array di lunghezza pari a n,
+dove l’elemento di indice i dell’array è pari alla media degli elementi della lista ottenuta applicando sommeDueADue alla lista di indice i dell’array liste.
+
+Nota bene:
+1) si consideri la media degli elementi di una lista vuota pari a 0.0
+
+Esempio
+
+liste: [
+  []		la lista ottenuta applicando sommeDueADue è [] (media = 0.0)
+  [1,2,3,7,3,5,8]		la lista ottenuta applicando sommeDueADue è [3, 10, 8, 9] (media 30/4=7.5)
+  [3,6,1,9,3,1]	la lista ottenuta applicando sommeDueADue è [9, 10, 4] (media=23/3=7.6)	
+]
+
+output: [0.0, 7.5, 7.6]

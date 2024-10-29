@@ -1,0 +1,62 @@
+Esercizio 1 - 14-07-2023 C
+
+Si scriva una funzione
+
+    Mat* inverti_e_max_quad(Mat* m);
+    
+che data in input una matrice di interi m di dimensione 2Nx2N, prima inverte di segno:
+gli elementi pari sopra la diagonale principale;
+gli elementi dispari sotto o sulla diagonale principale;
+e successivamente restituisce il sottoquadrante NxN della matrice risultante che ha media degli elementi massima. 
+I sottoquadranti di una matrice 2Nx2N sono le 4 sottomatrici NxN di m che partono dagli indici (0, 0), (0, N), (N, 0), (N, N). Se più sottoquadranti hanno la stessa media,
+va scelto il quadrante che viene prima nella lista dei sottoquadranti data precedentemente (i.e. quello più in alto a sinistra).
+
+Esempio 1
+
+m:
+2  1 
+1  3
+
+Prima invertiamo di segno gli elementi pari sopra la diagonale
+principale, e gli elementi dispari sotto o sulla diagonale principale:
+ 2   1 
+-1  -3
+
+In questo caso, i 4 quadranti sono tutti di dimensione 1x1, e per cui la
+media massima sarà 2, e la matrice da ritornare sarà la matrice 1x1:
+
+2
+
+Esempio 2
+
+m:
+8  14  10  15 
+11  6  15   3 
+15  6  14   3 
+1  13  9    1 
+
+Prima invertiamo di segno gli elementi pari sopra la diagonale
+principale, e gli elementi dispari sotto o sulla diagonale principale:
+  8  -14  -10   15  
+-11    6   15   3  
+-15    6   14   3  
+-1   -13  -9   -1  
+
+I quattro quadranti sono:
+  8  -14      -10   15  
+-11    6       15   3  
+
+-15    6       14    3  
+-1   -13       -9   -1  
+
+Con medie:
+- primo quadrante   (0, 0): -2.75
+- secondo quadrante (0, N):  5.75
+- terzo quadrante   (N, 0): -5.75
+- quarto quadrante  (N, N):  1.75
+Il quadrante a media massima è quindi il secondo (0, N).
+
+La soluzione da ritornare sarà quindi:
+
+-10  15  
+ 15  3  

@@ -1,0 +1,51 @@
+Esercizio 3 - 11-09-2023
+
+Implementare la funzione
+
+  void diffMinFogliaMaxAntenato(TipoAlbero a);
+
+che modifichi l’albero a nel modo seguente: il valore di ogni nodo n deve essere sostituito con la somma tra:
+la distanza di n dal suo antenato a valore massimo
+la distanza di n dal suo discendente a valore minimo
+A parità di valore, vanno scelti gli antenati e i discendenti più lontani. Se un nodo non ha antenati o discendenti, la distanza va considerata 0.
+Se due discendenti sullo stesso livello (e quindi a distanza uguale) hanno lo stesso valore, si scelga quello più a sinistra come minimo.
+
+Esempio
+
+Dato l'albero:
+
+                 3 
+           _____/ \_____   
+          /             \  
+         3               3 
+       _/ \_           _/      
+      /     \         /        
+     1       1       3         
+     |                           
+    /                            
+   8  
+
+Livello 0:
+- il nodo 3 non ha antenati (dist = 0) e ha discendente a valore minimo 1 (sx, dist = 2) -> nuovo valore 0+2 = 2
+Livello 1:
+- il nodo 3 (sx) ha antenato a valore max 3 (dist = 1) e discendente a valore minimo 1 (sx, dist = 1) -> nuovo valore 1+1 = 2
+- il nodo 3 (dx) ha antenato a valore max 3 (dist = 1) e discendente a valore minimo 3 (dx, dist = 1) -> nuovo valore 1+1 = 2
+Livello 2:
+- il nodo 1 (sx) ha antenato a valore max 3 (dist = 2) e discendente a valore minimo 8 (dx, dist = 1) -> nuovo valore 2+1 = 3
+- il nodo 1 (dx) ha antenato a valore max 3 (dist = 2) e nessun discendente (dist = 0) -> nuovo valore 2+0 = 2
+- il nodo 3 ha antenato a valore max 3 (dist = 2) e nessun discendente (dist = 0) -> nuovo valore 2+0 = 2
+Livello 3:
+- il nodo 8 ha antenato a valore max 3 (dist = 3) e nessun discendente (dist = 0) -> nuovo valore 3+0 = 3
+
+L’albero dopo le opportune modifiche diverrà quindi:
+
+                 2 
+           _____/ \_____   
+          /             \  
+         2               2 
+       _/ \_           _/      
+      /     \         /        
+     3       2       2         
+     |                           
+    /                            
+   3

@@ -1,0 +1,40 @@
+Esercizio 2 - 23-06-2023
+
+Regole
+
+Nell'esercizio 2.1, non usare gli array
+In entrambi 2.1 e 2.2, accedere alla struttura solo tramite l'interfaccia della lista fornita (ad esempio, non è consentito accedere a next e info).
+I metodi dell'interfaccia lista validi sono tutti quelli presenti nel file aux.h.
+
+Esercizio 2.1
+
+Si implementi la funzione ricorsiva:
+
+	TipoLista ruota(TipoLista l);
+ 
+che, data in input una lista l, restituisca una nuova lista contentente gli stessi elementi di l, in cui ogni elemento è spostato di una posizione a sinistra.
+Inoltre, il primo elemento di l deve trovarsi in ultima posizione.
+
+Quest'operazione si chiama "rotazione sinistra".
+
+Esempi
+l: []                return: []
+l: [0, 1]            return: [1, 0]
+l: [0, 1, 2, 3, 4]   return: [1, 2, 3, 4, 0]
+
+Esercizio 2.2
+
+Implementare la funzione:
+
+TipoLista combinazione(TipoLista lucchetto, int password);
+
+che riceva in input una lista lucchetto e un intero password. La funzione deve effettuare tante rotazioni sinistre quante sono necessarie affinché il primo elemento coincida con password.
+
+Si assuma che password possa essere trovato in lucchetto.
+
+In ogni caso, la funzione deve restituire una nuova lista.
+
+Esempi
+lucchetto: [0, 1, 2]     password: 2    return: [2, 0, 1]
+lucchetto: [0, 1, 2]     password: 0    return: [0, 1, 2]
+lucchetto: [1, 2, 3, 3]  password: 3  return: [3, 3, 1, 2]

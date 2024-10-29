@@ -1,0 +1,79 @@
+Esercizio 2 - 13-06-2023 A
+  
+Regole
+In entrambi gli esercizi è consentito accedere ai campi della struttura (next, info). Si può anche utilizzare l’interfaccia di lista fornita in aux.h.
+È possibile definire funzioni ausiliarie. Negli esercizi in cui è richiesta una soluzione ricorsiva, tutte le funzioni ausiliarie usate devono essere ricorsive.
+Funzioni che non processano direttamente i dati, ovvero quelle O(1), ovviamente non saranno ricorsive (né iterative).
+Non è consentito usare variabili globali (comprese zone di memoria allocate dinamicamente) e altre strutture dati (es. array) non esplicitamente indicati nel testo dell’esercizio.
+
+Esercizio 2.1
+
+Scrivere una funzione ricorsiva:
+
+  void modificaLista(TipoLista* l, int k);
+
+la quale riceve un puntatore ad una lista di interi l e un intero k minore o uguale alla lunghezza della lista puntata da l. 
+La funzione deve modificare la lista puntata da l in maniera tale i primi k elementi della lista puntata da l vengano rimossi dalla testa della lista e aggiunti in coda
+(nell’ordine in cui comparivano nella lista puntata da l).
+
+Nota bene:
+se la lista puntata da l è una lista vuota, allora k è 0 e la lista non deve essere modificata.
+se la lista puntata da l è non vuota e k è 0, la lista non deve essere modificata.
+
+Esempio 1
+
+lista puntata da l: [1,2,3,4,5,6,7]
+k: 3
+
+primi 3 elementi della lista sono [1,2,3]
+
+lista puntata da l dopo la modifica: [4,5,6,7,1,2,3]
+  
+Esempio 2
+
+lista puntata da l: []
+k: 0
+
+La lista puntata da l è vuota, quindi non deve essere modificata.
+
+lista puntata da l dopo la modifica: []
+  
+Esempio 3
+
+lista puntata da l: [3,6,1,9,3,1,0]
+k: 2
+  
+primi 2 elementi della lista sono [3,6]
+  
+lista puntata da l dopo la modifica: [1,9,3,1,0,3,6]
+
+Esercizio 2.2
+
+Scrivere una funzione:
+
+  double mediaSommaPesataModificaListe(TipoLista* liste, int* v, int n);
+
+la quale riceve un array di n liste di interi e un array di n interi v. La funzione deve restituire la media dei valori calcolati come segue:
+per ciascuna lista liste[i] modificata con la funzione modificaLista con k=v[i], sommarne gli elementi moltiplicando per la loro nuova posizione all’interno della lista modificata.
+
+Nota bene:
+ -per ogni i, il valore v[i] è minore alla lunghezza di liste[i] (così da permettere l’applicazione di modificaListe a liste[i] con k=v[i])
+ -se n=0, la funzione deve restituire 0.0
+ -la posizione di un elemento in una lista è pari all’indice + 1 (es. il primo elemento è in posizione 1)
+ -il risultato deve essere un valore decimale (di tipo double)
+
+Esempio
+
+liste: [
+  [5,1,3,1,2]		      la lista modificata secondo k=v[0]=2 è [3,1,2,5,1]
+                        e la somma pesata è 3*1 + 1*2 + 2*3 + 5*4 + 1*5 = 36
+  [1,7,0,2]		        la lista modificata secondo k=v[1]=1 è [7,0,2,1]
+                        e la somma pesata è 7*1 + 0*2 + 2*3 + 1*4 = 17
+  [5,1,3,1,1,1]		    la lista modificata secondo k=v[2]=3 è [1,1,1,5,1,3]
+                        e la somma pesata è 1*1 + 1*2 + 1*3 + 5*4 + 1*5 + 3*6 = 49
+  []                  la lista è vuota, quindi non viene modificata e la somma pesata è 0.0
+]
+
+v: [2,1,3,0]
+
+Risultato: 102/4 = 25.5

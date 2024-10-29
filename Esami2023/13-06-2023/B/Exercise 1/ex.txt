@@ -1,0 +1,38 @@
+Esercizio 1 - 13-06-2023 B
+
+Si scriva una funzione
+
+    int massimo_flip_colonna(Mat *m);
+    
+che data in input una matrice di interi m di dimensione 2Nx2N, restituisca la somma massima del quadrante (sottomatrice) NxN a partire dagli indici (0,0), (0,N), (N,0), (N,N) 
+della matrice m2 ottenuta effettuando l'operazione “flip-colonna” (si veda definizione sotto) sulle colonne di indice dispari a partire da m.
+L'operazione “flip-colonna” è definita nel seguente modo: Data una colonna “i” composta dagli elementi (a1,a2,...,an)^T = i, flip-colonna(i) = (an, …, a2,a1)^T.
+Ad esempio la colonna (1, 2, 3, 4)^T dopo una flip-colonna diventa (4, 3, 2, 1)^T.
+Nota: in caso di quadrante 0x0 (quadrante matrice vuota) la somma risultante è 0 e se una colonna è composta da un solo elemento (oppure da nessun elemento), rimane invariata.
+
+Esempio 1
+
+m:
+0 1 0 0
+0 3 0 0
+0 0 0 0
+2 0 0 0
+
+La somma che ritorneremo è 6, proveniente dal quadrante 2x2: 
+
+0 3
+2 1
+
+dopo aver effettuato un flip-colonna della seconda colonna (indice 1).
+
+output: 6
+
+Esempio 2
+
+m:
+5 8
+1 9
+
+Il valore ritornato sarà 9 perché in questa matrice i sottoquadranti sono i singoli elementi.
+
+output: 9

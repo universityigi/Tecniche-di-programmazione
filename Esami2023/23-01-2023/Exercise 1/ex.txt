@@ -1,0 +1,35 @@
+Esercizio 1 - 23-01-2023
+
+Si scriva una funzione:
+
+  Mat* massima_sottomatrice(Mat *m);
+
+che data in input una matrice di interi m di dimensione 2Nx2N, restituisca la sottomatrice NxN di m la cui media degli elementi è massima.
+Nota: in caso di stessa media restituire quella che ha il primo elemento nella matrice originale di indice riga minore, a parità di indice riga quello con anche indice colonna minore.
+
+Esempio 1
+
+m:
+5 8
+9 1
+
+la sottomatrice 1x1 che ritorneremo è: 
+
+9
+
+la quale ha media 9.0, superiore a tutte le altre.
+
+Esempio 2
+
+m:
+0 4 2 0
+0 3 4 0
+0 0 1 0
+0 0 1 1
+
+la sottomatrice 2x2 che ritorneremo è: 
+
+4 2 
+3 4 
+
+la quale ha media 3.25, superiore a tutte le altre.

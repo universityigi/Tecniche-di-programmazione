@@ -1,0 +1,84 @@
+Esercizio 2 - 14-07-2023 A
+
+Regole
+In entrambi gli esercizi NON è consentito accedere ai campi della struttura (next, info). Si deve quindi utilizzare l’interfaccia di lista fornita in aux.h.
+È possibile definire funzioni ausiliarie. Negli esercizi in cui è richiesta una soluzione ricorsiva, tutte le funzioni ausiliarie usate devono essere ricorsive.
+Funzioni che non processano direttamente i dati, ovvero quelle O(1), ovviamente non saranno ricorsive (né iterative).
+Non è consentito usare variabili globali (comprese zone di memoria allocate dinamicamente) e altre strutture dati (es. array) non esplicitamente indicati nel testo dell’esercizio.
+
+Esercizio 2.1
+Scrivere una funzione ricorsiva:
+
+  TipoLista precedentiMenoSuffisso(TipoLista l);
+  
+la quale riceve una lista di interi l. La funzione deve restituire una nuova lista output con la stessa lunghezza di l.
+L'elemento i-esimo di output deve essere pari alla somma dei primi i-1 elementi di l meno la somma degli elementi del più lungo suffisso crescente di l
+(crescente nel senso che ogni elemento è minore o uguale del successivo).
+Se si considera la lista [10,4,3,1,4,8], il suo suffisso crescente più lungo è [1,4,8] perché 1<=4<=8 e 3>1 (quindi [3,1,4,8] non è un suffisso crescente)
+
+Nota bene:
+1) se l è una lista vuota, la funzione deve restituire una lista vuota.
+2) la somma dei precedenti del primo elemento di l è pari a 0.
+
+Esempio 1
+
+l: []
+
+l è una lista vuota, quindi la funzione deve ritornare una lista vuota
+
+output: []
+
+Esempio 2
+
+l: [1,2,3,7,3,5,8]
+	
+il più lungo suffisso di l crescente è [3,5,8] (perché 3<=5<=8, ma 7>3), la cui somma è 16
+
+il primo elemento di output è pari 0 (il primo elemento di l non ha precedenti) - 16 (somma degli elementi del più lungo suffisso di l crescente) = -16
+il secondo elemento di output è pari a 1 (primo elemento di l) -16 = -15
+il terzo  elemento di output è pari a 3 (somma dei primi due elementi di l) -16 = -13
+il quarto  elemento di output è pari a 6 (somma dei primi tre elementi di l) -16 = –10
+il quinto elemento di output è pari a 13 (somma dei primi quattro elementi di l) -16 = -3
+il sesto elemento di output è pari a 16 (somma dei primi cinque elementi di l) -16 = 0
+il settimo  elemento di output è pari a 21 (somma dei primi sei  elementi di l) -16 = 5
+	
+output: [-16,-15,-13,-10,-3,0,5]
+
+Esempio 3
+
+l: [3,6,1,9,3,1,0]
+
+il più lungo suffisso di l crescente è [0] (perchè 1 è maggiore di 0), la cui somma è 0
+
+il primo elemento di output è pari 0 (il primo elemento di l non ha precedenti) - 0 (somma degli elementi del più lungo suffisso di l crescente) = 0
+il secondo elemento di output è pari a 3 (primo elemento di l) - 0 = 3
+il terzo  elemento di output è pari a 9 (somma dei primi due elementi di l) - 0 = 9
+il quarto  elemento di output è pari a 10 (somma dei primi tre elementi di l) - 0 = 10
+il quinto elemento di output è pari a 19 (somma dei primi quattro elementi di l) - 0 = 19
+il sesto elemento di output è pari a 22 (somma dei primi cinque elementi di l) - 0 = 22
+il settimo  elemento di output è pari a 23 (somma dei primi sei  elementi di l) - 0 = 23
+  
+output: [0,3,9,10,19,22,23]
+
+Esercizio 2.2
+
+Scrivere una funzione:
+
+  double* mediaPrecedentiMenoSuffisso(TipoLista* liste, int n);
+  
+la quale riceve un array di n liste di interi. La funzione deve restituire un array di lunghezza pari a n dove l’elemento di indice i dell’array è pari 
+alla media degli elementi della lista ottenuta applicando precedentiMenoSuffisso alla lista di indice i dell’array liste.
+
+Nota bene:
+1) si consideri la media degli elementi di una lista vuota pari a 0.0
+
+Esempio
+
+liste: [
+  [5, 2, 2, 1, 1, 4]		la lista ottenuta applicando precedentiMenoSuffisso è [-6, -1, 1, 3, 4, 5] (media=6/6=1.0)
+  [5, 2, 5, 1, 1]		la lista ottenuta applicando precedentiMenoSuffisso è [-2, 3, 5, 10, 11] (media 27/5=5.4)
+  [4, 1, 3, 2, 4, 5, 5, 2]	la lista ottenuta applicando precedentiMenoSuffisso è [-2, 2, 3, 6, 8, 12, 17, 22] (media=68/8=8.5)	
+  []			la lista è vuota, quindi la lista ottenuta applicando precedentiMenoSuffisso è vuota (media=0.0, guarda NB)
+]
+
+output: [1.0, 5.4, 8.5, 0.0]

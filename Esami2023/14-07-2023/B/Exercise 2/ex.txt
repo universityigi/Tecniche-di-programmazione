@@ -1,0 +1,85 @@
+Esercizio 2 - 14-07-2023 B
+
+Regole
+In entrambi gli esercizi NON è consentito accedere ai campi della struttura (next, info). Si deve quindi utilizzare l’interfaccia di lista fornita in aux.h.
+È possibile definire funzioni ausiliarie. Negli esercizi in cui è richiesta una soluzione ricorsiva, tutte le funzioni ausiliarie usate devono essere ricorsive.
+Funzioni che non processano direttamente i dati, ovvero quelle O(1), ovviamente non saranno ricorsive (né iterative).
+Non è consentito usare variabili globali (comprese zone di memoria allocate dinamicamente) e altre strutture dati (es. array) non esplicitamente indicati nel testo dell’esercizio.
+
+Esercizio 2.1
+Scrivere una funzione ricorsiva:
+
+  TipoLista successiviMenoPrefisso(TipoLista l);
+  
+la quale riceve una lista di interi l. La funzione deve restituire una nuova lista output con la stessa lunghezza di l.
+L'elemento i-esimo di output deve essere pari alla somma degli elementi di l che seguono il suo i-esimo elemento meno la somma degli elementi del più lungo prefisso descrescente di l
+(descrescente nel senso che ogni elemento è maggiore o uguale del successivo). Se si considera la lista [10,4,3,1,4,8],
+il suo prefisso decrescente più lungo è [10,4,3,1] perché 10>=4>=3>=1 e 1 < 4 (quindi [10,4,3,1,4] non è un prefisso decrescente).
+
+Nota bene:
+
+1) se l è una lista vuota, la funzione deve restituire una lista vuota.
+2) la somma dei successivi dell'ultimo elemento di l è pari a 0.
+
+Esempio 1
+
+l: []
+
+l è una lista vuota, quindi la funzione deve ritornare una lista vuota
+
+output: []
+  
+Esempio 2
+
+l: [3,2,1,7,3,5,8]
+	
+il più lungo prefisso di l decrescente è [3,2,1] (perché 3>=2>=1, ma 1 < 7) e la sua somma è 6
+	
+il primo elemento di output è pari 26 (somma degli ultimi sei elementi di l) - 6 (somma degli elementi del più grande suffisso di l crescente) = 20
+il secondo elemento di output è pari a 24 (somma degli ultimi cinque elementi di l) - 6 = 18
+il terzo  elemento di output è pari a 23 (somma degli ultimi quattro elementi di l) - 6 = 17
+il quarto  elemento di output è pari a 16 (somma degli ultimi tre elementi di l) - 6 = 10
+il quinto elemento di output è pari a 13 (somma degli ultimi due elementi di l) - 6 = 7
+il sesto elemento di output è pari a 8 (ultimo elemento di l) - 6 = 2
+il settimo elemento di output è pari a 0 (l’ultimo elemento di l non ha successivi) - 6 = -6
+	
+output: [20,18,17,10,7,2,-6]
+
+Esempio 3:
+
+l: [3,6,1,9,3,1,0]
+
+il più lungo prefisso di l decrescente è [3] (perché 6>3), la cui somma è 3
+
+il primo elemento di output è pari 20 (somma degli ultimi sei elementi di l) - 3 (somma degli elementi del più lungo prefisso di l decrescente) = 17
+il secondo elemento di output è pari a 14 (somma degli ultimi cinque elementi di l) - 3 = 11
+il terzo  elemento di output è pari a 13 (somma degli ultimi quattro elementi di l) - 3 = 10
+il quarto  elemento di output è pari a 4 (somma degli ultimi tre elementi di l) - 3 = 1
+il quinto elemento di output è pari a 1 (somma degli ultimi due elementi di l) - 3 = -2
+il sesto elemento di output è pari a 0 (ultimo elemento di l) - 3 = -3
+il settimo  elemento di output è pari a 0 (l’ultimo elemento di l non ha successivi)) - 3 = -3
+  
+output: [17,11,10,1,-2,-3,-3]
+
+Esercizio 2.2
+
+Scrivere una funzione:
+
+  int* maxSuccessiviMenoPrefisso(TipoLista* liste, int n);
+  
+la quale riceve un array di n liste di interi. La funzione deve restituire un array di lunghezza pari a n dove l’elemento di indice i dell’array è pari
+al massimo degli elementi della lista ottenuta applicando successiviMenoPrefisso alla lista di indice i dell’array liste.
+
+Nota bene:
+1) si consideri il massimo degli elementi di una lista vuota pari a 0.0
+
+Esempio
+
+liste: [
+  [5, 2, 2, 1, 1, 4]		la lista ottenuta applicando successiviMenoPrefisso è [-1, -3, -5, -6, -7, -11] (massimo=-1)
+  [5, 2, 5, 1, 1]		la lista ottenuta applicando successiviMenoPrefisso è [2, 0, -5, -6, -7] (massimo=2)
+  [4, 1, 3, 2, 4, 5, 5, 2]	la lista ottenuta applicando successiviMenoPrefisso è [17, 16, 13, 11, 7, 2, -3, -5] (massimo=17)	
+  []			la lista è vuota, quindi la lista ottenuta applicando successiviMenoPrefisso è vuota (massimo=0, guarda NB)
+]
+
+output: [-1, 2, 17, 0]

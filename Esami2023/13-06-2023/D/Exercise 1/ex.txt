@@ -1,0 +1,31 @@
+Esercizio 1 - 13-06-2023 D
+  
+Si scriva una funzione
+
+    Mat* ultimi_gli_unici(Mat *m);
+
+che prende in input una matrice di interi m di dimensione NxM, con elementi compresi nell'intervallo [0, N*M]. La funzione restituisce una copia della matrice m,
+in cui gli elementi che si ripetono più di una volta vengono sostituiti come segue: se l'ultima occorrenza dell'elemento è già presente nella matrice in una riga di indice pari,
+viene sostituito con -1, altrimenti con -2. È importante mantenere l'elemento che appare per ultimo nella matrice, sia in ordine di riga che (in caso di stessa riga) di colonna.
+Ad esempio, se abbiamo l'elemento x in posizione (i, j) e anche in posizione (i, k), (l,j) con k < j e l < i, gli elementi in posizione (i, k) e (l, j) devono essere sostituiti come descritto.
+  
+Esempio 1
+  
+m:
+1 1 
+0 1
+   
+
+output m2:
+-2 -2
+ 0  1
+    
+Esempio 2
+  
+m:
+0 1
+2 3
+    
+output m2:
+0 1
+2 3

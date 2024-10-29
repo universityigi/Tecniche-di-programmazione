@@ -1,0 +1,48 @@
+Esercizio 3 - 13-06-2023 A
+
+Implementare la funzione
+
+  void cambiaNodoDalCammino(TipoAlbero a, int k)
+  
+che dato un albero a in input ed un valore k, modifica il valore n di ogni nodo dell'albero in:
+n+k se la somma degli antenati del nodo è multiplo di k (0 compreso);
+n-k altrimenti.
+I valori degli antenati da usare nel calcolo sono quelli presenti nell'albero iniziale prima della modifica.
+
+Nota bene: Per l’albero vuoto non va effettuata nessuna modifica. Per la radice, considerare 0 come somma degli antenati.
+
+Esempio
+
+Dato l'albero:
+
+      3 		
+    /   \
+   3     3		
+  / \      \ 
+ 1   1      3		
+/
+8
+
+con k = 6
+
+Livello 0:
+La somma degli antenati della radice è 0, per cui il nuovo valore diventa 3+6=9
+Livello 1:
+La somma degli antenati di 3 è 3, che non è multiplo di k, per cui il nuovo valore diventa 3-6=-3
+La somma degli antenati di 3 è 3, che non è multiplo di k, per cui il nuovo valore diventa 3-6=-3
+Livello 2:
+La somma degli antenati di 1 è 6, che è multiplo di 6, per cui il nuovo valore diventa 1+6=7
+La somma degli antenati di 1 è 6, che è multiplo di 6, per cui il nuovo valore diventa 1+6=7
+La somma degli antenati di 3 è 6, che è multiplo di 6, per cui il nuovo valore diventa 3+6=9
+Livello 3:
+La somma degli antenati di 8 è 7, che non è multiplo di 6, per cui il nuovo valore diventa 8-6=2
+
+L’albero dopo le opportune modifiche diverrà:
+
+          9 		
+       /     \
+     -3       - 3		
+    /   \        \ 
+   7     7         9		
+  /
+ 2

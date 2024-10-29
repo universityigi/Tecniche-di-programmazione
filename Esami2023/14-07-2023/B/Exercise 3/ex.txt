@@ -1,0 +1,53 @@
+Esercizio 3 - 14-07-2023 B
+
+Implementare la funzione
+
+  void diffSommaMinMaxDispari(TipoAlbero a);
+  
+che modifichi l’albero a nel modo seguente: il valore di ogni nodo n deve essere sostituito con la differenza tra:
+la somma tra il minimo e il massimo tra i valori dei nodi del sottoalbero di n che contiene il maggior numero di nodi dispari;
+la somma tra il minimo e il massimo tra i valori dei nodi del sottoalbero di n che contiene il minor numero di nodi dispari.
+A parità di numero di nodi dispari, si consideri il sottoalbero sinistro come sottoalbero col maggior numero di nodi dispari. 
+Per calcolare la somma minimo+massimo e il sottoalbero con maggior/minor numero di nodi dispari, vanno utilizzati i valori dei nodi del sottoalbero prima che la
+modifica venga effettuata (ovvero i valori originali presenti in a prima della modifica). Nel caso in cui un sottoalbero sia vuoto, la somma minimo+massimo corrispondente è da considerarsi 0.
+Si noti che l'albero a in input conterrà valori sempre minori di 100 e maggiori di -100. Se l'albero a è vuoto, non va effettuata nessuna modifica.
+
+Esempio
+
+Dato l'albero:
+
+                 3 
+           _____/ \_____   
+          /             \  
+         3               3 
+       _/ \_           _/      
+      /     \         /        
+     1       1       3         
+     |                           
+    /                            
+   8   
+
+Livello 0:
+- il nodo 3 ha due sottoalberi: sx con 3 nodi dispari e somma massimo+minimo = 8+1=9; dx con 2 nodi dispari e somma massimo+minimo = 3+3=6 -> nuovo valore 9-6=3
+Livello 1:
+- il nodo 3 (sx) ha due sottoalberi: sx con 1 nodo dispari e somma massimo+minimo = 8+1=9; dx con 1 nodo dispari e somma massimo+minimo = 1+1=2 -> nuovo valore 9-2=7
+- il nodo 3 (dx) ha solo il sottoalbero sx, con somma massimo+minimo = 3+3=6 -> nuovo valore 6-0=6
+Livello 2:
+- il nodo 1 (sx) ha solo il sottoalbero sx, con somma massimo+minimo = 8+8=16 -> nuovo valore 16-0=16
+- il nodo 1 (dx) non ha sottoalberi -> nuovo valore 0
+- il nodo 3 (sx) non ha sottoalberi -> nuovo valore 0
+Livello 3:
+- il nodo 8 (sx) non ha sottoalberi -> nuovo valore 0
+
+L’albero dopo le opportune modifiche diverrà quindi:
+
+                 3 
+           _____/ \_____   
+          /             \  
+         7               6 
+       _/ \_           _/      
+      /     \         /        
+     16       0       0         
+     |                           
+    /                            
+   0 

@@ -1,0 +1,33 @@
+Esercizio 3 - 23-06-2023
+
+Per svolgere l’esercizio usare esclusivamente le funzioni del tipo astratto albero binario fornite.
+
+Si implementi la funzione
+
+  TipoAlbero limita_albero(TipoAlbero a, int k);
+  
+che, dato un albero a ed un intero k, restituisca un nuovo albero avente la stessa struttura di a e in cui il valore di ciascun nodo n è assegnato come segue:
+se la somma dei valori nel percorso dalla radice ad n (incluso) è, nell’albero a, minore o uguale a k, allora il valore del nodo n nell’albero restituito rimane invariato;
+altrimenti, il valore del nodo n è pari a 0.
+Si assuma che il valore dei nodi di a sia maggiore o uguale a 0.
+
+Esempio
+
+Dato l'albero
+      0
+     / \
+    3   3
+   /   / \
+  2   4   8
+     /   / \
+    1   4   1
+    
+e k=7, l'output sarà:
+
+      0
+     / \
+    3   3
+   /   / \
+  2   4   0
+     /   / \
+    0   0   0

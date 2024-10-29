@@ -1,0 +1,76 @@
+Esercizio 2 - 14-07-2023 C
+
+Regole
+
+In entrambi gli esercizi NON è consentito accedere ai campi della struttura (next, info). Si deve quindi utilizzare l’interfaccia di lista fornita in aux.h.
+È possibile definire funzioni ausiliarie. Negli esercizi in cui è richiesta una soluzione ricorsiva, tutte le funzioni ausiliarie usate devono essere ricorsive.
+Funzioni che non processano direttamente i dati, ovvero quelle O(1), ovviamente non saranno ricorsive (né iterative).
+Non è consentito usare variabili globali (comprese zone di memoria allocate dinamicamente) e altre strutture dati (es. array) non esplicitamente indicati nel testo dell’esercizio.
+
+Esercizio 2.1
+
+Scrivere una funzione ricorsiva:
+
+  TipoLista mediaMenoMax(TipoLista l);
+  
+la quale riceve una lista di interi positivi l. La funzione deve restituire una nuova lista output con la stessa lunghezza di l. 
+L'elemento i-esimo di output deve essere pari al massimo presente nei primi i-1 elementi di l meno l'intero inferiore del valore medio degli elementi di l che seguono l'i-esimo elemento di l 
+(per esempio: se il valore medio è 3.4, allora l'intero inferiore è 3).
+
+Nota bene:
+1) se l è una lista vuota, la funzione deve restituire una lista vuota.
+2) per il primo elemento di output (ovvero i=0) si consideri il massimo nei primi i-1 elementi di l pari a 0.
+3) si consideri il valore medio degli elementi che seguono l'ultimo elemento di l pari a 0.
+
+Esempio 1
+
+l: []
+
+l è una lista vuota, quindi la funzione deve ritornare una lista vuota
+
+output: []
+
+Esempio 2
+
+l: [1,2,3,8]
+	
+il primo elemento di output è pari a 0 (il primo elemento di l non ha precedenti) - 4 ( il l'intero inferiore del valore medio dei successivi elementi di l è l'intero inferiore di (2+3+8) / 3 = 4.4 ovvero 4) = -4
+il secondo elemento di output è pari a 1 (il massimo dei precedenti elementi di l è 1) - 5 ( il l'intero inferiore del valore medio dei successivi elementi è l'intero inferiore di (3+8) / 2 = 5.5 ovvero 5) = -4
+il terzo elemento di output è pari a 2 (il massimo dei precedenti elementi di l è 2) - 8 ( il l'intero inferiore del valore medio dei successivi elementi è l'intero inferiore di (8) / 1 = 8 ovvero 8) = -6
+il quarto elemento di output è pari a 3 (il massimo dei precedenti elementi di l è 3) - 0 (poiché l'ultimo elemento di l non ha successivi) = 3
+
+output: [-4, -4, -6, 3]
+  
+Esempio 3
+
+l: [3,1,6]
+
+il primo elemento di output è pari a 0 (il primo elemento di l non ha precedenti) - 3 ( il l'intero inferiore del valore medio dei successivi elementi di l è l'intero inferiore di (1+6) / 2 = 3.5 ovvero 3) = -3
+il secondo elemento di output è pari a 3 (il massimo dei precedenti elementi di l è 3) - 6 ( il l'intero inferiore del valore medio dei successivi elementi è l'intero inferiore di (6) / 1 = 6 ovvero 6) = -3
+il terzo elemento di output è pari a 3 (il massimo dei precedenti elementi di l è 3) - 0 ( poiché l'ultimo elemento di l non ha successivi) = 3
+  
+output: [-3,-3,3]
+  
+Esercizio 2.2
+
+Scrivere una funzione:
+
+  int* massimiElementi(TipoLista* liste, int n);
+  
+la quale riceve un array di n liste di interi positivi della stessa lunghezza. La funzione deve restituire un array di lunghezza pari alla lunghezza della lista più lunga dell'array liste. 
+L’elemento di indice i dell’array è pari al massimo tra gli elementi di posizione i+1 delle liste dell'array liste dopo aver applicato la funzione mediaMenoMax.
+
+Esempio
+
+liste: [
+  [2, 1, 1]		la lista ottenuta applicando massimiElementi è [-1, 1, 2]
+  [1, 1, 5]		la lista ottenuta applicando massimiElementi è [-3, -4, 1] 
+  [5, 2, 5]	  la lista ottenuta applicando massimiElementi è [-3, 0, 5]
+  [5, 5, 2]   la lista ottenuta applicando massimiElementi è [-3, 3, 5]
+]
+
+out[0] è pari al massimo tra -1, -3, -3, -3 (i primi elementi delle quattro liste ottenute applicando mediaMenoMax)
+out[1] è pari al massimo tra 1, -4, 0 e 3 (i secondi elementi delle quattro liste ottenute applicando mediaMenoMax)
+out[2] è pari al massimo tra 2, 1, 5 e 5 (i terzi elementi delle delle quattro liste ottenute applicando mediaMenoMax)
+
+output: [-1, 3, 5]
